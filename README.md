@@ -4,12 +4,20 @@ Using Linux Pluggable Authentication Modules (PAM) to authenticate users via the
 
 ## Compilation
 To compile a PAM program using gcc on the Linux command line, run the command
+<br />
 `gcc -o program program.c -lpam -lpam_misc`
+<br />
 and run it with
+<br />
 `./program`
 
 ## Headers to include
-PAM applications must contain certain header files in order to work. These files can be found in `usr/include/security`. If they do not yet exist, install them from the command line by using `sudo apt-get install libpam0g-dev`
+PAM applications must contain certain header files in order to work. These files can be found in <br />
+`usr/include/security`
+<br />
+ If they do not yet exist, install them from the command line by using 
+ <br />
+ `sudo apt-get install libpam0g-dev`
 
 ## Useful Links
 - [Linux-PAM Application Developers' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_ADG.html)
