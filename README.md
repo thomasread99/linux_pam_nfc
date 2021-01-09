@@ -19,6 +19,11 @@ To compile NFC program using gcc on the Linux command line, run the command
 and run it with
 <br />
 `./program`
+<br />
+<br />
+To compile a program that uses crypt, run the command
+<br />
+`gcc -o program program.c -lcrypt
 
 ## PAM Application setup
 PAM applications must contain certain header files in order to work. These files can be found in <br />

@@ -1,1 +1,3 @@
-int nfcauth_get_targets (char **targets[]);
+int getTargets (char **targets[]);
+
+int addAuth (char *user, char *target);
