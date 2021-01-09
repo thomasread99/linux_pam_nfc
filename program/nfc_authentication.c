@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 /*Include the PAM header files*/
-#include "pam_appl.h"
-#include "pam_misc.h"
+#include <security/pam_appl.h>
+#include <security/pam_misc.h>
 
 /*Linux header file to get the username of the current user*/
 #include "unistd.h"
@@ -130,7 +130,7 @@ int nfc_scan() {
             printf("    ATS (ATR): ");
             print_hex(nt.nti.nai.abtAts, nt.nti.nai.szAtsLen);
         }
-    }
+    }    
 
     /*Close nfc device*/
     nfc_close(pnd);

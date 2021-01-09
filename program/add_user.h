@@ -1,0 +1,1 @@
+int nfcauth_get_targets (char **targets[]);

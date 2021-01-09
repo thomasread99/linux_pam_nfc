@@ -5,7 +5,9 @@
 #define CONFIG "login"
 
 int pam_authentication();
+
 static void print_hex(const uint8_t *pbtData, const size_t szBytes);
+
 int nfc_scan();
 
 #endif
