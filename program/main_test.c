@@ -5,6 +5,11 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <security/pam_modules.h>
+#include <security/_pam_macros.h>
+#include <security/pam_appl.h>
+#include <security/pam_misc.h>
+
 #include <nfc/nfc.h>
 #include <sys/stat.h>
 
@@ -12,21 +17,58 @@
 
 /*Define the PAM configuration file as a constant*/
 #define CONFIGFILE "/etc/pam_nfc.conf"
+#define CONFIG "login"
 
 //extern int nfcauth_is_authorized (const char *user, char *target);
-extern int nfcauth_get_targets (char **targets[]);
+//extern int nfcauth_get_targets (char **targets[]);
+
+static struct pam_conv conv = {
+    misc_conv,
+    NULL
+};
 
 int main (int argc, char *argv[])
 {
-    int granted = nfcauth_authorize(argv[1]);
+    /*int granted = nfcauth_authorize(argv[1]);
 
     if (granted == 1) {
         printf("Authorized\n");
         exit(EXIT_SUCCESS);
-    }
+    }    
 
     printf("Unauthorized\n");
-    exit(EXIT_FAILURE);
+    exit(EXIT_FAILURE);*/
+
+    int granted = pam_sm_authenticated (argc, argv);
+
+    printf("%d\n", granted);  
+}
+
+PAM_EXTERN
+int pam_sm_authenticated (int argc, const char **argv) 
+{
+    pam_handle_t *pamh = NULL;
+    int retval = PAM_AUTH_ERR;
+    char confline[256];
+    const char *user = NULL;
+
+    pam_start(CONFIG, NULL, &conv, &pamh);
+
+    retval = pam_get_user (pamh, &user, NULL);
+    if (retval != PAM_SUCCESS)
+    {
+        printf ("User not found\n");
+        return retval;
+    }
+    if (user == NULL || *user == '\0')
+    {
+        printf("Username not known\n");
+        return retval;
+    }
+
+    if (!(nfcauth_check ())) return PAM_SERVICE_ERR;
+
+    return (nfcauth_authorize (user)) ? PAM_SUCCESS : PAM_AUTH_ERR;
 }
 
 int nfcauth_authorize (const char *user)
@@ -138,4 +180,21 @@ int nfcauth_is_authorized (const char *user, char *target)
     }
 
     return found;
+}
+
+int nfcauth_check (void) 
+{
+    struct stat conffile_fileinfo;
+
+    if (stat (CONFIGFILE, &conffile_fileinfo)) {
+        return 0;
+    }
+
+    if ((conffile_fileinfo.st_mode & S_IWOTH)
+            || !S_ISREG (conffile_fileinfo.st_mode))
+    {
+        return 0;
+    }
+
+    return 1;
 }
