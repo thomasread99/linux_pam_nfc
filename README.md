@@ -11,6 +11,7 @@ Prerequesites for this project are:
 To use the program, clone the repository, and run:
 <br />
 `cd pam_nfc`
+<br />
 `make`
 <br />
 Run ./add_user with your user name as a parameter and a card on the card reader to register a new user. Run ./authenticate with your card on the reader to authenticate yourself.
