@@ -15,7 +15,7 @@ To use the program, clone the repository, and run:
 <br />
 `make`
 <br />
-Run ./add_user with your user name as a parameter and a card on the card reader to register a new user. Run ./authenticate with your card on the reader to authenticate yourself.
+Run ./add_user with your user name as a parameter and a card on the card reader to register a new user. Run ./authenticate with your card on the reader to authenticate yourself. Both programs must be run using sudo or as a superuser in order to work, as they access protected files.
 
 ## Compilation
 To compile a PAM program using gcc on the Linux command line, run the command
