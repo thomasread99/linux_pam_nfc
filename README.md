@@ -23,7 +23,7 @@ and run it with
 <br />
 To compile a program that uses crypt, run the command
 <br />
-`gcc -o program program.c -lcrypt
+`gcc -o program program.c -lcrypt`
 
 ## PAM Application setup
 PAM applications must contain certain header files in order to work. These files can be found in <br />
