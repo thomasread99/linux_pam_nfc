@@ -6,6 +6,7 @@ Using Linux Pluggable Authentication Modules (PAM) to authenticate users via the
 Prerequesites for this project are:
 * libnfc installed on your system (see NFC application setup for details)
 * A physical NFC card reader and tags
+* Create an empty file called pam_nfc.conf in /etc/
 
 ## Usage
 To use the program, clone the repository, and run:
