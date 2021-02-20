@@ -24,10 +24,10 @@ add_user: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 # Compilation of authenticate
-_MDEPS = authenticate.h nfc_functions.h
+_MDEPS = authenticate.h nfc_functions.h apdu_functions.h
 MDEPS = $(patsubst %,$(IDIR)/%,$(_MDEPS))
 
-_MOBJ = authenticate.o nfc_functions.o
+_MOBJ = authenticate.o nfc_functions.o apdu_functions.o
 MOBJ = $(patsubst %,$(ODIR)/%,$(_MOBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.c $(MDEPS)

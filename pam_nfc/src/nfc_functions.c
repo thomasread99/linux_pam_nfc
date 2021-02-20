@@ -9,6 +9,7 @@
 
 #include "../include/add_user.h"
 #include "../include/nfc_functions.h"
+#include "../include/apdu_functions.h"
 
 /*Function to check if the user is authorised with their tag*/
 int authorise (const char *user)
@@ -57,6 +58,12 @@ int getTargets (char **targets[])
     /*Start the NFC context and detect the number of devices*/
     nfc_context *context;
     nfc_init(&context);
+
+    if (context = NULL) {
+        printf("Unable to init libnfc (malloc)\n");
+        exit(EXIT_FAILURE);
+    }
+
     deviceCount = nfc_list_devices(context, devices, 8);
 
     /*Define the NFC modulation values*/
