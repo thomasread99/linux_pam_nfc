@@ -11,10 +11,10 @@ SDIR = src
 all: add_user authenticate
 
 # Compilation of add_user
-_DEPS = add_user.h nfc_functions.h 
+_DEPS = add_user.h nfc_functions.h apdu_functions.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = add_user.o nfc_functions.o
+_OBJ = add_user.o nfc_functions.o apdu_functions.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)

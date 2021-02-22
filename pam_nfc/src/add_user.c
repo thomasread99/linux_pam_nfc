@@ -9,6 +9,7 @@
 
 #include "../include/add_user.h"
 #include "../include/nfc_functions.h"
+#include "../include/apdu_functions.h"
 
 int main (int argc, char *argv[])
 {
@@ -17,36 +18,31 @@ int main (int argc, char *argv[])
     {
         fprintf(stderr, "Add your username as a parameter\n");
         exit(EXIT_FAILURE);
-    }
+    }    
 
     /*Variable declarations*/
-    char **targets;
-    int n;
+    char *id, *name;
+    
+    name = argv[1];
+    /*Set id to the id received from the device*/
+    id = getID();    
 
-    /*Set n to the number of NFC targets*/
-    n = getTargets (&targets);
+    /*Check that an ID has been received*/
+    if (id == NULL) {
+        errx (EXIT_FAILURE, "Error communicating with device\n");
+    }    
 
-    /*Check that one and only one target is detected*/
-    if (n != 1) {
-        errx (EXIT_FAILURE, "%d targets detected", n);
-    } 
-
-    /*Run the function to add the user to the configuration file and error check*/
-    if (!(addAuth (argv[1], targets[0]))) {
-        err (EXIT_FAILURE, "Error adding authorization for the user");
-    }
-
-    /*Free the memory*/
-    free (targets[0]);
-	free (targets);
+    /*Run the function to add the user id to the configuration file and error check*/
+    if (!(addAuth (name, id))) {
+        err (EXIT_FAILURE, "Error adding authorization for the user\n");
+    }       
 
     /*Exit and report success*/
     printf("User added\n");
     exit(EXIT_SUCCESS);
 }
 
-/*Add the user and tag to the configuration file*/
-int addAuth (char *user, char *target)
+int addAuth (char *user, char *id) 
 {
     /*Variable declarations*/
     int ret;
@@ -68,7 +64,7 @@ int addAuth (char *user, char *target)
     }
 
     /*Write to the config file*/
-    ret = (fprintf (config, "%s %s\n", user, crypt(target, "RC")) > 0);
+    ret = (fprintf (config, "%s %s\n", user, crypt(id, "RC")) > 0);
 
     /*If you can't close the config file, return*/
     if (fclose (config) != 0) {

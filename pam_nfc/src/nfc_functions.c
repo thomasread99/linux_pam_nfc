@@ -1,4 +1,5 @@
 /*Headers to include*/
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,103 +19,26 @@ int authorise (const char *user)
     int authorised = 0;
 
     /*Variable declarations*/
-    char **targets;
-    int i, targetCount;
+    char *id;
 
-    /*Get the number of NFC targets*/
-    targetCount = getTargets(&targets);
+    /*Set the id to the id received from the device*/
+    id = getID();
 
-    /*For each target found, check to see if it is authorised*/
-    for (i = 0; i < targetCount; i++) {
-        if (checkAuth (user, targets[i])) {
-            authorised = 1;
-            break;
-        }
+    /*Check that an ID has been received*/
+    if (id == NULL) {
+        errx (EXIT_FAILURE, "Error communicating with device\n");
+    } 
+
+    /*Check if the user is authorized with the id received*/
+    if (checkAuth(user, id)) {
+        authorised = 1;        
     }
-
-    /*Free the memory*/
-    for (i = 0; i < targetCount; i++) {
-        free (targets[i]);
-    }
-    free (targets);
-
-    /*Return the result*/
+    
     return authorised;
 }
 
-/*Function to get the number of NFC targets*/
-int getTargets (char **targets[])
-{
-    /*Set the intial amount of targets to 0*/
-    int numTargets = 0;
-
-    /*Variable declarations*/
-    *targets = malloc (32 * sizeof (char *));
-    nfc_connstring devices[8];
-    size_t deviceCount;
-    size_t targetCount;
-    size_t i;
-
-    /*Start the NFC context and detect the number of devices*/
-    nfc_context *context;
-    nfc_init(&context);
-
-    if (context = NULL) {
-        printf("Unable to init libnfc (malloc)\n");
-        exit(EXIT_FAILURE);
-    }
-
-    deviceCount = nfc_list_devices(context, devices, 8);
-
-    /*Define the NFC modulation values*/
-    nfc_modulation nm = {
-        .nmt = NMT_ISO14443A,
-        .nbr = NBR_UNDEFINED
-    };
-
-    /*Loop through each NFC reader*/
-    for (i = 0; i < deviceCount; i++) {
-        /*Open a connection to the device*/
-        nfc_device* initiator = nfc_open (context, devices[i]);
-        
-        if (initiator) {
-            /*Initiate the connection*/
-            nfc_initiator_init (initiator);
-            nfc_target ant[32];
-            int res;
-
-            /*If there is passive targets*/
-            if ((res = nfc_initiator_list_passive_targets (initiator, nm, ant, 32)) >= 0) {
-                size_t iTarget;
-                targetCount = res;
-
-                /*Loop through the passive targets*/
-                for (iTarget = 0; iTarget < targetCount; iTarget++) {
-                    /*Allocate memory to the targets*/
-                    if (((*targets)[numTargets] = malloc (2 * ant[iTarget].nti.nai.szUidLen + 1))) {
-                        size_t n;
-                        (*targets)[numTargets][0] = '\0';
-
-                        for (n = 0; n < ant[iTarget].nti.nai.szUidLen; n++) {
-                            sprintf ((*targets)[numTargets] + 2 * n, "%02x", ant[iTarget].nti.nai.abtUid[n]);
-                        }
-                        /*Increment the target calculator*/
-                        numTargets++;
-                    }
-                }
-            }
-            /*Close the connection to the device*/
-            nfc_close (initiator);
-        }
-    }
-    /*Exit from libnfc*/
-    nfc_exit(context);
-    /*Return the number of targets detected*/
-    return numTargets;
-}
-
 /*Function to check if the user and tag are found in the config*/
-int checkAuth (const char *user, char *target)
+int checkAuth (const char *user, char *id)
 {
     /*Initially set to not found*/
     int found = 0;
@@ -124,7 +48,7 @@ int checkAuth (const char *user, char *target)
     char needle[BUFSIZ];
 
     /*Write to the buffer*/
-    snprintf (needle, BUFSIZ, "%s %s\n", user, crypt(target, "RC"));
+    snprintf (needle, BUFSIZ, "%s %s\n", user, crypt(id, "RC"));
 
     /*Open the config file for reading*/
     if ((config = fopen(CONFIGFILE, "r"))) {
