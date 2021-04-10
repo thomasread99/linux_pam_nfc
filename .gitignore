@@ -52,5 +52,5 @@ Mkfile.old
 dkms.conf
 
 # Programs
-/pam_nfc/add_user
-/pam_nfc/authenticate
+/program/add_user
+/program/authenticate
