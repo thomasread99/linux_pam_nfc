@@ -2,6 +2,21 @@
 ## Description
 Using Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC)
 
+## Prerequisites
+Prerequesites for this project are:
+* libnfc installed on your system (see NFC application setup for details)
+* A physical NFC card reader and tags
+* Create an empty file called pam_nfc.conf in /etc/
+
+## Usage
+To use the program, clone the repository, and run:
+<br />
+`cd pam_nfc`
+<br />
+`make`
+<br />
+Run ./add_user with your user name as a parameter and a card on the card reader to register a new user. Run ./authenticate with your card on the reader to authenticate yourself. Both programs must be run using sudo or as a superuser in order to work, as they access protected files.
+
 ## Compilation
 To compile a PAM program using gcc on the Linux command line, run the command
 <br />
@@ -19,6 +34,11 @@ To compile NFC program using gcc on the Linux command line, run the command
 and run it with
 <br />
 `./program`
+<br />
+<br />
+To compile a program that uses crypt, run the command
+<br />
+`gcc -o program program.c -lcrypt`
 
 ## PAM Application setup
 PAM applications must contain certain header files in order to work. These files can be found in <br />
