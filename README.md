@@ -1,58 +1,20 @@
 # linux_pam_nfc
-## Description
-Using Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC)
+## DESCRIPTION
+This program uses Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC). It can be uses which traditional NFC smart cards, as long as they are configured correctly, although the intended use of this program is with the OS_auth_application Android App.
 
-## Prerequisites
-Prerequesites for this project are:
-* libnfc installed on your system (see NFC application setup for details)
+## PREREQUISITES
+In order to use this program, you must have:
+* A Linux system (preferably Debian based)
+* libnfc installed on your system (see setup for details)
 * A physical NFC card reader and tags
 * Create an empty file called pam_nfc.conf in /etc/
 
-## Usage
-To use the program, clone the repository, and run:
-<br />
-`cd pam_nfc`
-<br />
-`make`
-<br />
-Run ./add_user with your user name as a parameter and a card on the card reader to register a new user. Run ./authenticate with your card on the reader to authenticate yourself. Both programs must be run using sudo or as a superuser in order to work, as they access protected files.
-
-## Compilation
-To compile a PAM program using gcc on the Linux command line, run the command
-<br />
-`gcc -o program program.c -lpam -lpam_misc`
-<br />
-and run it with
-<br />
-`./program`
-<br />
-<br />
-To compile NFC program using gcc on the Linux command line, run the command
-<br />
-`gcc -o program program.c -lnfc`
-<br />
-and run it with
-<br />
-`./program`
-<br />
-<br />
-To compile a program that uses crypt, run the command
-<br />
-`gcc -o program program.c -lcrypt`
-
-## PAM Application setup
-PAM applications must contain certain header files in order to work. These files can be found in <br />
-`usr/include/security`
-<br />
- If they do not yet exist, install them from the command line by using 
- <br />
- `sudo apt-get install libpam0g-dev`
-
-## NFC Application setup
+## SETUP
+### NFC SETUP
 In order to use NFC in Linux with C support, you must use the free libnfc library. This can be installed using <br />
 `sudo apt-get install libnfc-bin libnfc-examples libnfc-pn53x-examples`
 <br />
-in Debian or Ubuntu based systems.
+in Debian based systems.
 <br />
 If using an ACR122 reader, as in the project, a few extra steps must be taken in order for it to work properly. Firstly, pcscd must be installed using <br />
 `sudo apt-get install pcscd`
@@ -76,11 +38,45 @@ To use libnfc within C, run on the command line
 <br />
 and then at the top of the C file `#include <nfc/nfc.h>`
 
+### LINUX-PAM SETUP
+PAM applications must contain certain header files in order to work. These files can be found in <br />
+`usr/include/security`
+<br />
+If they do not yet exist, install them from the command line by using 
+<br />
+`sudo apt-get install libpam0g-dev`
 
-## Useful Links
+## COMPILATION
+For ease of compilation, a makefile has been included with this solution. To compile both programs, simply run:
+<br />
+`cd program`
+<br />
+`make`
+
+## USAGE
+Once the program has been compiled, two executable files will be generated in the `program` folder.
+### add_user
+The add_user program is used to add new users to the pam_nfc.conf file. To use this program, simply run:
+<br />
+`sudo ./add_user $USERNAME$
+<br />
+where `$USERNAME` is replaced with the username of the user you are adding. The program will establish a connection to the NFC reader where it will wait for the device to be touched to the reader. Once the device has been touched to the reader, it will perform the APDU transaction, and assuming everything is setup correctly, add the new user and their authentication ID to the config file.
+
+### authenticate
+The authenticate program carrys out the actual user authentication with Linux-PAM, using the entries in the config file. To use this program, simply run:
+<br />
+`sudo ./authenticate`
+<br />
+This program takes in no parameters via the command line, but Linux-PAM will prompt you to enter your username once the program is running. Once again, a connection to the NFC reader will be established, and once a device is touched, the APDU transaction is performed. The authentication ID received will then be compared to the configuration file, and Linux-PAM handles the authentication as a result.
+
+## USEFUL LINKS
 - [Linux-PAM Application Developers' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_ADG.html)
 - [Configure and use Linux-PAM](https://likegeeks.com/linux-pam-easy-guide/)
 - [How to Configure and use PAM in Linux](https://www.tecmint.com/configure-pam-in-centos-ubuntu-linux/)
 - [libnfc GitHub page](https://github.com/nfc-tools/libnfc)
 - [libnfc Wiki](http://nfc-tools.org/index.php/Main_Page)
 - [Stack Overflow](https://stackoverflow.com/)
+
+## TROUBLESHOOTING
+If you have any problems with setting up, running, or using this program, please do not hesitate to get in touch.
+**Developers contact email:** psytwr@nottingham.ac.uk
