@@ -1,6 +1,6 @@
 # linux_pam_nfc
 ## DESCRIPTION
-This program uses Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC). It can be uses which traditional NFC smart cards, as long as they are configured correctly, although the intended use of this program is with the OS_auth_application Android App.
+This program uses Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC). It can be used with traditional NFC smart cards, as long as they are configured correctly, although the intended use of this program is with the OS_auth_application Android App.
 
 ## PREREQUISITES
 In order to use this program, you must have:
@@ -58,7 +58,7 @@ Once the program has been compiled, two executable files will be generated in th
 ### add_user
 The add_user program is used to add new users to the pam_nfc.conf file. To use this program, simply run:
 <br />
-`sudo ./add_user $USERNAME$
+`sudo ./add_user $USERNAME$`
 <br />
 where `$USERNAME` is replaced with the username of the user you are adding. The program will establish a connection to the NFC reader where it will wait for the device to be touched to the reader. Once the device has been touched to the reader, it will perform the APDU transaction, and assuming everything is setup correctly, add the new user and their authentication ID to the config file.
 
