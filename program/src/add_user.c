@@ -48,7 +48,7 @@ int addAuth (char *user, char *id)
     int ret;
     FILE *config;
 
-    /*If the config gile exists, check that it is read-only*/
+    /*If the config file exists, check that it is read-only*/
     if ((config = fopen (CONFIGFILE, "r"))) {
         fclose (config);
         /*Chmod the file so it can be written to*/

@@ -80,8 +80,7 @@ char* apduTransmit(nfc_device *pnd, uint8_t * capdu, size_t capdulen, uint8_t * 
         *rapdulen = (size_t) res;   
         /*Append each byte received to a string*/     
         for (szPos = 0; szPos < *rapdulen; szPos++) {
-            length += sprintf(id + length, "%02x", rapdu[szPos]);
-            
+            length += sprintf(id + length, "%02x", rapdu[szPos]);            
         }
         
         return id;
