@@ -1,6 +1,22 @@
 # linux_pam_nfc
+## CONTENTS
+1. [Description](#DESCRIPTION)
+2. [Contribution](#CONTRIBUTION)
+3. [Acknowledgement](#ACKNOWLEDGEMENT)
+4. [Prerequisites](#PREREQUISITES)
+5. [Setup](#SETUP)
+6. [Compilation](#COMPILATION)
+7. [Usage](#USAGE)
+8. [To do](#TODO)
+9. [Useful Links](#USEFUL LINKS)
+10. [Troubleshooting](#TROUBLESHOOTING)
+
+
 ## DESCRIPTION
 This program uses Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC). It can be used with traditional NFC smart cards, as long as they are configured correctly, although the intended use of this program is with the OS_auth_application Android App.
+
+## CONTRIBUTION
+If you would like to be added as a contributor to this project, please get in touch with the owner via email: thomas@readcode.co.uk
 
 ## ACKNOWLEDGEMENT
 Whilst this project is novel work, it takes inspiration from [pam_nfc](https://github.com/nfc-tools/pam_nfc). Thank you to the developers of that project for releasing it under a GNU General Public license so that it could be used to benefit this work. 
@@ -73,17 +89,14 @@ The authenticate program carrys out the actual user authentication with Linux-PA
 This program takes in no parameters via the command line, but Linux-PAM will prompt you to enter your username once the program is running. Once again, a connection to the NFC reader will be established, and once a device is touched, the APDU transaction is performed. The authentication ID received will then be compared to the configuration file, and Linux-PAM handles the authentication as a result.
 
 ## TODO
-### Priority
+### PRIORITY
 - Get project to actually unlock the computer and not just run from the command line
 - Use a secure channel for the NFC communication
 - UI for adding and managing users
 
-### Extension
+### EXTENSION
 *Please get in touch with the owner of this project before attempting anything from this section - thomas@readcode.co.uk*
 - Windows/MacOS version
-
-## CONTRIBUTION
-If you would like to be added as a contributor to this project, please get in touch with the owner via email: thomas@readcode.co.uk
 
 ## USEFUL LINKS
 - [Linux-PAM Application Developers' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_ADG.html)
