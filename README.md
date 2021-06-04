@@ -7,16 +7,15 @@
 5. [Setup](#SETUP)
 6. [Compilation](#COMPILATION)
 7. [Usage](#USAGE)
-8. [To do](#TODO)
-9. [Useful Links](#USEFUL-LINKS)
-10. [Troubleshooting](#TROUBLESHOOTING)
+8. [Useful Links](#USEFUL-LINKS)
+9. [Troubleshooting](#TROUBLESHOOTING)
 
 
 ## DESCRIPTION
 This program uses Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC). It can be used with traditional NFC smart cards, as long as they are configured correctly, although the intended use of this program is with the OS_auth_application Android App.
 
 ## CONTRIBUTION
-If you would like to be added as a contributor to this project, please get in touch with the owner via email: thomas@readcode.co.uk
+Please see the CONTRIBUTING.md file for information on contributing to the project
 
 ## ACKNOWLEDGEMENT
 Whilst this project is novel work, it takes inspiration from [pam_nfc](https://github.com/nfc-tools/pam_nfc). Thank you to the developers of that project for releasing it under a GNU General Public license so that it could be used to benefit this work. 
@@ -87,24 +86,6 @@ The authenticate program carrys out the actual user authentication with Linux-PA
 `sudo ./authenticate`
 <br />
 This program takes in no parameters via the command line, but Linux-PAM will prompt you to enter your username once the program is running. Once again, a connection to the NFC reader will be established, and once a device is touched, the APDU transaction is performed. The authentication ID received will then be compared to the configuration file, and Linux-PAM handles the authentication as a result.
-
-## TODO
-### PRIORITY
-- Get project to actually unlock the computer and not just run from the command line
-- Use a secure channel for the NFC communication
-- UI for adding and managing users
-
-### EXTENSION
-*Please get in touch with the owner of this project before attempting anything from this section - thomas@readcode.co.uk*
-- Windows/MacOS version
-
-## USEFUL LINKS
-- [Linux-PAM Application Developers' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_ADG.html)
-- [Configure and use Linux-PAM](https://likegeeks.com/linux-pam-easy-guide/)
-- [How to Configure and use PAM in Linux](https://www.tecmint.com/configure-pam-in-centos-ubuntu-linux/)
-- [libnfc GitHub page](https://github.com/nfc-tools/libnfc)
-- [libnfc Wiki](http://nfc-tools.org/index.php/Main_Page)
-- [Stack Overflow](https://stackoverflow.com/)
 
 ## TROUBLESHOOTING
 If you have any problems with setting up, running, or using this program, please do not hesitate to get in touch.
