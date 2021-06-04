@@ -8,7 +8,7 @@
 6. [Compilation](#COMPILATION)
 7. [Usage](#USAGE)
 8. [To do](#TODO)
-9. [Useful Links](#USEFUL LINKS)
+9. [Useful Links](#USEFUL-LINKS)
 10. [Troubleshooting](#TROUBLESHOOTING)
 
 
