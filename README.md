@@ -2,6 +2,9 @@
 ## DESCRIPTION
 This program uses Linux Pluggable Authentication Modules (PAM) to authenticate users via the use of Near-Field Communication (NFC). It can be used with traditional NFC smart cards, as long as they are configured correctly, although the intended use of this program is with the OS_auth_application Android App.
 
+## ACKNOWLEDGEMENT
+Whilst this project is novel work, it takes inspiration from [pam_nfc](https://github.com/nfc-tools/pam_nfc). Thank you to the developers of that project for releasing it under a GNU General Public license so that it could be used to benefit this work. 
+
 ## PREREQUISITES
 In order to use this program, you must have:
 * A Linux system (preferably Debian based)
@@ -76,7 +79,11 @@ This program takes in no parameters via the command line, but Linux-PAM will pro
 - UI for adding and managing users
 
 ### Extension
+*Please get in touch with the owner of this project before attempting anything from this section - thomas@readcode.co.uk*
 - Windows/MacOS version
+
+## CONTRIBUTION
+If you would like to be added as a contributor to this project, please get in touch with the owner via email: thomas@readcode.co.uk
 
 ## USEFUL LINKS
 - [Linux-PAM Application Developers' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_ADG.html)
@@ -88,4 +95,4 @@ This program takes in no parameters via the command line, but Linux-PAM will pro
 
 ## TROUBLESHOOTING
 If you have any problems with setting up, running, or using this program, please do not hesitate to get in touch.
-**Developers contact email:** psytwr@nottingham.ac.uk
+**Owners contact email:** thomas@readcode.co.uk
