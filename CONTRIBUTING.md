@@ -42,9 +42,9 @@ Unsure about where to begin? Look at the [Currently required features](#currentl
 
 # Getting started
 For information on cloning, compiling and running this project, please see the README, and let me know if there are any issues. Once that has been setup, to begin work:
-1. Create a new branch for your contribution (see [Conventions](#conventions))
-2. Do all your changes on that branch/work as much as you need on it, although keep branches limited to one feature each
-3. Create a pull request to main once your branch is finished and working as it should
+1. Create a new fork for your contribution (see [Conventions](#conventions))
+2. Do all your changes on that fork
+3. Create a pull request to main once your feature is finished, although keep each pull request to one feature
 
 # How to report a bug
 Currently, there is no specific system for reporting bugs. The best way is to get in touch with me via email: thomas@readcode.co.uk and I will add this to the required features and enhancements. Please include information in your email regarding system version, NFC reader version, and how to replicate the issue.
@@ -57,7 +57,7 @@ At this moment in time, any pull requests will be reviewed by me, as and when I 
 
 # Conventions
 ## Git conventions
-- Name your branches as a maximum of three words describing the change, separated by hypens. eg. fix-encryption-bug
+- Name your branches/forks as a maximum of three words describing the change, separated by hypens. eg. fix-encryption-bug
 - Give your pull requests meaningful names that accuratley describe what they do
 - Provide detailed description for your pull request so that the reviewer can easily tell what it does
 
