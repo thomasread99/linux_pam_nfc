@@ -26,6 +26,7 @@ In order to use this program, you must have:
 * libnfc installed on your system (see setup for details)
 * A physical NFC card reader and tags
 * Create an empty file called pam_nfc.conf in /etc/
+* An Android phone with NFC, and the app installed (in the app folder)
 
 ## SETUP
 ### NFC SETUP
@@ -63,6 +64,9 @@ PAM applications must contain certain header files in order to work. These files
 If they do not yet exist, install them from the command line by using 
 <br />
 `sudo apt-get install libpam0g-dev`
+
+### APP SETUP
+Download the APK file in the app folder on this repo to your Android smartphone, and install (may need to allow install from unknown sources). Once downloaded, create an account on the app, and use this is sign in. To use the app, simply tap on the reader.
 
 ## COMPILATION
 For ease of compilation, a makefile has been included with this solution. To compile both programs, simply run:
