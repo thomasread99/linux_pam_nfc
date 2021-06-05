@@ -47,10 +47,10 @@ For information on cloning, compiling and running this project, please see the R
 3. Create a pull request to main once your feature is finished, although keep each pull request to one feature
 
 # How to report a bug
-Currently, there is no specific system for reporting bugs. The best way is to get in touch with me via email: thomas@readcode.co.uk and I will add this to the required features and enhancements. Please include information in your email regarding system version, NFC reader version, and how to replicate the issue.
+Please submit any bugs found using the bug issue template, under the issues tab.
 
 # How to suggest a feature or enhancement
-Once again, there is currently no specific system for suggesting features or enhancements. The best way is to get in touch with me via email: thomas@readcode.co.uk and I will add this to the required features and enhancements.
+Please submit any new feature ideas using the feature issue template, under the issues tab.
 
 # Code review process
 At this moment in time, any pull requests will be reviewed by me, as and when I can get to them (within a week). Please provide as much description and information as possible in your pull request so I can understand what your change does and how it works. In future, I plan on adding extra reviewers to this process, but that depends on the size of the community and contributors.
