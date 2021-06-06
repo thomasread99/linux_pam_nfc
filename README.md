@@ -92,5 +92,5 @@ The authenticate program carrys out the actual user authentication with Linux-PA
 This program takes in no parameters via the command line, but Linux-PAM will prompt you to enter your username once the program is running. Once again, a connection to the NFC reader will be established, and once a device is touched, the APDU transaction is performed. The authentication ID received will then be compared to the configuration file, and Linux-PAM handles the authentication as a result.
 
 ## TROUBLESHOOTING
-If you have any problems with setting up, running, or using this program, please do not hesitate to get in touch.
-**Owners contact email:** thomas@readcode.co.uk
+If you have any problems with setting up, running, or using this program, please use the discussion tab on GitHub.
+
