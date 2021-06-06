@@ -37,7 +37,7 @@ Unsure about where to begin? Look at the [Currently required features](#currentl
 - Refactor the code into the shortest/most optimal format
 
 ## Extension
-*Please get in touch with the owner of this project before attempting anything from this section - thomas@readcode.co.uk*
+*Please get in touch with the owner of this project before attempting anything from this section*
 - Windows/MacOS version
 
 # Getting started
@@ -68,4 +68,4 @@ At this moment in time, any pull requests will be reviewed by me, as and when I 
 - Put references to everything in the header files
 
 # Where can I ask for help
-Anywhere! Get in touch with the community, or feel free to email me at thomas@readcode.co.uk, and I will respond as fast as I can!
+Anywhere! Get in touch with the community via the discussions, or feel free to get in touch with me directly, and I will respond as fast as I can!
