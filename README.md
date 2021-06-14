@@ -91,6 +91,9 @@ The authenticate program carrys out the actual user authentication with Linux-PA
 <br />
 This program takes in no parameters via the command line, but Linux-PAM will prompt you to enter your username once the program is running. Once again, a connection to the NFC reader will be established, and once a device is touched, the APDU transaction is performed. The authentication ID received will then be compared to the configuration file, and Linux-PAM handles the authentication as a result.
 
+### APPLICATION ID
+The app and program are already configured to use the same AID to work. However, if you do need to know this, the AID used for this project is *A0000002471001*.
+
 ## SECURITY
 In order to make authentication more secure, this project uses application protocol data unit (APDU) for authentication, as opposed to the UID of the device. UIDs are not secure as can be easily read and spoofed. APDU is more secure, although still not perfect, but hopefully this project will be extended in future to use a secure channel for all NFC transactions, making it much more secure. For more information on APDU and how this works, there is plenty of papers and knowledge articles on the Internet.
 
